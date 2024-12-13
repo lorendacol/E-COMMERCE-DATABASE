@@ -1,0 +1,85 @@
+  /* General Styles */
+  body {
+    font: 14px 'Poppins', sans-serif;
+    background-color: #101820; /* Dark background with a greenish tint */
+    color: #ffffff; /* White text */
+    margin: 0;
+    padding: 0;
+}
+
+/* Navbar Styling */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+    background-color: #1c1f24; /* Slightly lighter dark background */
+    box-shadow: 0px 0px 15px rgba(0, 255, 127, 0.4); /* Neon green glow */
+}
+
+.navbar .page-title {
+    font-size: 28px;
+    font-weight: 600;
+    color: #00ff7f; /* Neon green text */
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.navbar .buttons {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.navbar button {
+    background-color: #00ff7f; /* Neon green button */
+    color: #101820; /* Dark text */
+    border: none;
+    padding: 10px 15px;
+    border-radius: 50px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 600;
+    font-size: 14px;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0px 0px 15px rgba(0, 255, 127, 0.4); /* Neon glow */
+}
+
+.navbar button i {
+    font-size: 16px;
+}
+
+.navbar button:hover {
+    background-color: #32ff7f; /* Brighter neon green */
+    box-shadow: 0px 0px 20px rgba(0, 255, 127, 0.6);
+}
+
+.navbar button:hover i {
+    animation: bounce 0.6s;
+}
+
+/* Animation for hover effect */
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-5px);
+    }
+    60% {
+        transform: translateY(-3px);
+    }
+}
+
+/* Links Styling */
+a {
+    color: #32ff7f;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #00ff7f;
+    text-decoration: underline;
+}

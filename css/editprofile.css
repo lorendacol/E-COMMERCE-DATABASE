@@ -1,0 +1,75 @@
+body {
+    font: 14px sans-serif;
+    background-color: #101820; /* Dark background with a greenish tint */
+    color: #ffffff; /* White text */
+    margin: 0;
+    padding: 0;
+}
+
+/* Wrapper Styles */
+.wrapper {
+    width: 360px;
+    padding: 20px;
+    background-color: #1c1f24; /* Slightly lighter dark background */
+    border-radius: 8px;
+    box-shadow: 0px 0px 15px rgba(0, 255, 127, 0.4); /* Neon green glow */
+    margin: auto;
+    margin-top: 100px;
+    text-align: center;
+}
+
+/* Headings and Paragraphs */
+h2, p {
+    color: #00ff7f; /* Neon green text */
+}
+
+/* Form Control Styles */
+.form-control {
+    width: 100%;
+    background-color: #262a30; /* Dark grey background */
+    color: #ffffff; /* White text */
+    border: 1px solid #00ff7f; /* Green border */
+    border-radius: 4px;
+    padding: 10px;
+    margin-bottom: 15px;
+}
+
+.form-control:focus {
+    border-color: #32ff7f; /* Brighter green on focus */
+    box-shadow: 0 0 10px rgba(0, 255, 127, 0.5);
+}
+
+/* Button Styles */
+.btn-primary {
+    background-color: #00ff7f; /* Green button */
+    border: none;
+    padding: 10px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.btn-primary:hover {
+    background-color: #32ff7f; /* Brighter green on hover */
+}
+
+/* Alert Styles */
+.alert-danger {
+    background-color: #00ff7f; /* Green alert background */
+    color: #101820; /* Dark text for contrast */
+    border: none;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 4px;
+}
+
+/* Link Styles */
+a {
+    color: #32ff7f; /* Green link */
+    text-decoration: none;
+}
+
+a:hover {
+    color: #00ff7f; /* Brighter green on hover */
+    text-decoration: underline;
+}

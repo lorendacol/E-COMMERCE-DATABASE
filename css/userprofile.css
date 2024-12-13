@@ -1,0 +1,128 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #101820; /* Dark background */
+    color: #ffffff; /* White text */
+    margin: 0;
+    padding: 0;
+}
+
+/* Navbar Styling */
+.navbar {
+    margin-bottom: 20px;
+    background-color: #1c1f24; /* Slightly lighter dark background */
+    padding: 10px 20px;
+    box-shadow: 0px 0px 10px rgba(0, 255, 127, 0.4); /* Neon green glow effect */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar a {
+    color: #00ff7f; /* Neon green links */
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.navbar a:hover {
+    color: #32ff7f; /* Brighter green on hover */
+    text-decoration: underline;
+}
+
+/* Profile Container */
+.profile-container {
+    max-width: 800px;
+    margin: auto;
+    background: #1c1f24; /* Dark gray */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 255, 127, 0.4); /* Neon green glow */
+    color: #ffffff;
+}
+
+.profile-container h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #00ff7f; /* Neon green */
+}
+
+/* Profile Image */
+.profile-image {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.profile-image img {
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    box-shadow: 0 0 10px rgba(0, 255, 127, 0.4); /* Neon glow */
+}
+
+/* Profile Info */
+.profile-info {
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.profile-info label {
+    font-weight: bold;
+    color: #00ff7f; /* Neon green */
+}
+
+.profile-info input,
+.profile-info select {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    background-color: #262a30; /* Dark gray input background */
+    color: #ffffff; /* White text */
+    border: 1px solid #00ff7f; /* Green border */
+    border-radius: 4px;
+    transition: all 0.3s ease-in-out;
+    display: none; /* Hidden by default */
+}
+
+.profile-info input:focus,
+.profile-info select:focus {
+    border-color: #32ff7f; /* Brighter green on focus */
+    box-shadow: 0 0 10px rgba(0, 255, 127, 0.5);
+}
+
+/* Edit Icon */
+.edit-icon {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    color: #00ff7f; /* Neon green icon */
+}
+
+.edit-icon:hover {
+    color: #32ff7f; /* Brighter green on hover */
+}
+
+/* Save Button */
+.btn-save {
+    text-align: center;
+}
+
+.btn-save button {
+    background-color: #00ff7f; /* Neon green button */
+    color: #101820; /* Dark text */
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    display: none; /* Hidden by default */
+    box-shadow: 0px 0px 10px rgba(0, 255, 127, 0.4); /* Neon glow */
+}
+
+.btn-save button:hover {
+    background-color: #32ff7f; /* Brighter green on hover */
+    box-shadow: 0px 0px 20px rgba(0, 255, 127, 0.6);
+    transform: scale(1.05); /* Slight zoom on hover */
+}
