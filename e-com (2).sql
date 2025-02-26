@@ -229,7 +229,7 @@ INSERT INTO `users` (`id`, `email`, `password`, `full_name`, `cellphone_number`,
 (2, 'opop@nbsc.edu.ph', '$2y$10$i1XIlJ.UcPq8fWeQIwDN5ODv9za8cbomPX4dKTUjaYbGz5Me6qSTW', 'opop', '045675623', 'zone 2 sankanan', '2025-01-02', 'Male', 'Germany', '2024-12-08 18:01:38', '2024-12-08 18:02:09'),
 (3, 'mama@gmail.com', '$2y$10$EoYvRVBOJd6dzIZ3Aj5dXurn3nbD/gg2eL0XAab2Tcet64DoLFSba', 'mama', '909876756443', 'zone 2 sankanan', '2024-12-27', 'Female', 'Philippines', '2024-12-08 19:26:49', '2024-12-08 19:27:43'),
 (4, 'opopop@gmail.com', '$2y$10$c9Khatt8Z5GxcPQf03hr.OovgsifMHXYmHdYtvJTdiuARKze86erC', 'maloy', '84939399299', 'southblue', '2024-12-26', 'Female', 'Germany', '2024-12-10 16:32:03', '2024-12-10 16:32:45'),
-(5, 'loray@gmail.com', '$2y$10$8NzriUDX7.jyvyIrw9mX5..lpiQQVVtXpFNNKGA0bEE5lbeS6aBwK', NULL, NULL, NULL, NULL, NULL, NULL, '2024-12-13 03:08:47', '2024-12-13 03:08:47');
+
 
 --
 -- Indexes for dumped tables

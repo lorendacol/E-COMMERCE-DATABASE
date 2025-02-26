@@ -15,6 +15,12 @@ if (isset($_GET['delete_id'])) {
     exit();
 }
 
+// Query to fetch the number of failed login attempts
+$failedLoginCountStmt = $pdo->prepare("SELECT COUNT(*) AS failed_count FROM failed_logins");
+$failedLoginCountStmt->execute();
+$failedLoginCount = $failedLoginCountStmt->fetch(PDO::FETCH_ASSOC)['failed_count'];
+
+// Fetch products as usual (already in your code)
 $pumaStmt = $pdo->prepare("SELECT * FROM products WHERE company_name = 'Puma'");
 $pumaStmt->execute();
 $pumaProducts = $pumaStmt->fetchAll(PDO::FETCH_ASSOC);
@@ -58,6 +64,10 @@ $adidasProducts = $adidasStmt->fetchAll(PDO::FETCH_ASSOC);
             color: green;
             text-decoration: none;
             margin-left: 20px;
+        }
+        .nav-links .failed-attempts {
+            color: red;
+            font-weight: bold;
         }
         .content {
             padding: 20px;
@@ -110,8 +120,11 @@ $adidasProducts = $adidasStmt->fetchAll(PDO::FETCH_ASSOC);
         </div>
         <div class="nav-links">
             <a href="logout.php">Logout</a>
-            <a href="feedbacks.php">feedbacks</a>
-       
+            <a href="feedbacks.php">Feedbacks</a>
+            <!-- Display the number of failed attempts -->
+            <a href="failed_attempts.php" class="failed-attempts">
+                Failed Attempts (<?php echo $failedLoginCount; ?>)
+            </a>
         </div>
     </div>
 
