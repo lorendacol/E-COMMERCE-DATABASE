@@ -138,7 +138,7 @@ function logFailedLogin($email, $id, $failed_attempts) {
 <body>
     <div class="wrapper">
         <h2>Login</h2>
-        <p>Please fill in your credentials to login.</p>
+        <p>Please fill in your credentials to login.</p>  
 
         <?php 
         if(!empty($login_err)){
