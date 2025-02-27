@@ -8,9 +8,9 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
 }
 
 // Fetch the failed login attempts from the database
-$failedAttemptsStmt = $pdo->prepare("SELECT * FROM failed_logins ORDER BY timestamp DESC");
-$failedAttemptsStmt->execute();
-$failedAttempts = $failedAttemptsStmt->fetchAll(PDO::FETCH_ASSOC);
+$failed_loginsStmt = $pdo->prepare("SELECT * FROM failed_logins ORDER BY created_at DESC"); // Use created_at or timestamp as per your DB
+$failed_loginsStmt->execute();
+$failed_logins = $failed_loginsStmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 <!DOCTYPE html>
@@ -97,18 +97,16 @@ $failedAttempts = $failedAttemptsStmt->fetchAll(PDO::FETCH_ASSOC);
                     <th>ID</th>
                     <th>Email</th>
                     <th>IP Address</th>
-                    <th>Timestamp</th>
-                 
+                    <th>Timestamp</th> <!-- You can replace 'created_at' if that's the column name -->
                 </tr>
             </thead>
             <tbody>
-                <?php foreach ($failedAttempts as $attempt): ?>
+                <?php foreach ($failed_logins as $attempt): ?>
                     <tr>
                         <td><?php echo htmlspecialchars($attempt['id']); ?></td>
                         <td><?php echo htmlspecialchars($attempt['email']); ?></td>
                         <td><?php echo htmlspecialchars($attempt['ip_address']); ?></td>
-                        <td><?php echo htmlspecialchars($attempt['timestamp']); ?></td>
-               
+                        <td><?php echo htmlspecialchars($attempt['created_at']); ?></td> <!-- Updated to match column name -->
                     </tr>
                 <?php endforeach; ?>
             </tbody>

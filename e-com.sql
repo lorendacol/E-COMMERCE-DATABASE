@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 13, 2024 at 04:50 AM
--- Server version: 10.4.32-MariaDB
--- PHP Version: 8.2.12
+-- Generation Time: Feb 27, 2025 at 05:16 AM
+-- Server version: 10.4.28-MariaDB
+-- PHP Version: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -75,6 +75,28 @@ INSERT INTO `companies` (`id`, `company_name`, `email`, `password`, `logo_image`
 (1, 'nike', 'admin@nike.com', 'nike123', 'https://i.pinimg.com/736x/d4/20/46/d4204662d48e847dbf4dff048863546c.jpg'),
 (2, 'adidas', 'admin@adidas.com', 'adidas123', 'https://e7.pngegg.com/pngimages/61/526/png-clipart-adidas-logo-adidas-puma-logo-shoe-sportswear-adidas-angle-text.png'),
 (3, 'puma', 'admin@puma.com', 'puma123', 'https://cdn.icon-icons.com/icons2/2845/PNG/512/puma_logo_icon_181343.png');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `failed_logins`
+--
+
+CREATE TABLE `failed_logins` (
+  `id` int(11) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `ip_address` varchar(45) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `failed_logins`
+--
+
+INSERT INTO `failed_logins` (`id`, `email`, `ip_address`, `created_at`) VALUES
+(1, 'dacol@gmail.com', '::1', '2025-02-27 04:14:36'),
+(2, 'dacol@gmail.com', '::1', '2025-02-27 04:14:38'),
+(3, 'dacol@gmail.com', '::1', '2025-02-27 04:14:40');
 
 -- --------------------------------------------------------
 
@@ -217,156 +239,39 @@ CREATE TABLE `users` (
   `gender` enum('Male','Female','Other') DEFAULT NULL,
   `country` enum('Philippines','America','China','Brazil','Thailand','Japan','India','Australia','Canada','Germany') DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `failed_attempts` int(11) DEFAULT 0,
+  `last_failed_attempt` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `email`, `password`, `full_name`, `cellphone_number`, `address`, `birthday`, `gender`, `country`, `created_at`, `updated_at`) VALUES
-(1, 'joshua@gmail.com', '$2y$10$VXCP.xnfzPUieI7LTFq5O.fLnOOvjlG3a.PJBc6uk4uf16oSoDBGG', 'opop', '', 'No information available', '0000-00-00', '', '', '2024-12-08 13:03:36', '2024-12-08 17:52:33'),
-(2, 'opop@nbsc.edu.ph', '$2y$10$i1XIlJ.UcPq8fWeQIwDN5ODv9za8cbomPX4dKTUjaYbGz5Me6qSTW', 'opop', '045675623', 'zone 2 sankanan', '2025-01-02', 'Male', 'Germany', '2024-12-08 18:01:38', '2024-12-08 18:02:09'),
-(3, 'mama@gmail.com', '$2y$10$EoYvRVBOJd6dzIZ3Aj5dXurn3nbD/gg2eL0XAab2Tcet64DoLFSba', 'mama', '909876756443', 'zone 2 sankanan', '2024-12-27', 'Female', 'Philippines', '2024-12-08 19:26:49', '2024-12-08 19:27:43'),
-(4, 'opopop@gmail.com', '$2y$10$c9Khatt8Z5GxcPQf03hr.OovgsifMHXYmHdYtvJTdiuARKze86erC', 'maloy', '84939399299', 'southblue', '2024-12-26', 'Female', 'Germany', '2024-12-10 16:32:03', '2024-12-10 16:32:45'),
-
+INSERT INTO `users` (`id`, `email`, `password`, `full_name`, `cellphone_number`, `address`, `birthday`, `gender`, `country`, `created_at`, `updated_at`, `failed_attempts`, `last_failed_attempt`) VALUES
+(0, 'lorai@gmail.com', '$2y$10$f61LFhTo/K.ijTvJAi18a.docwA6UlDeg1w7VBye3LwbhpA/JVmtm', 'red', '32436', 'vv', '2005-02-02', 'Male', 'Philippines', '2025-02-27 03:57:49', '2025-02-27 04:14:40', 3, '2025-02-27 04:14:40'),
+(0, 'dacol@gmail.com', '$2y$10$xK0C9Nb8vtTPx4bG05P9hedc7THN1s3HKw3jnsrEGDN6WK5PDXwGK', 'red', '32436', 'vv', '2005-02-02', 'Male', 'Philippines', '2025-02-27 04:14:11', '2025-02-27 04:14:40', 3, '2025-02-27 04:14:40');
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `admins`
+-- Indexes for table `failed_logins`
 --
-ALTER TABLE `admins`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `cart`
---
-ALTER TABLE `cart`
+ALTER TABLE `failed_logins`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `user_id` (`user_id`),
-  ADD KEY `product_id` (`product_id`);
-
---
--- Indexes for table `companies`
---
-ALTER TABLE `companies`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `email` (`email`);
-
---
--- Indexes for table `history`
---
-ALTER TABLE `history`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `products`
---
-ALTER TABLE `products`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `product_feedback`
---
-ALTER TABLE `product_feedback`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `user_id` (`user_id`),
-  ADD KEY `product_id` (`product_id`);
-
---
--- Indexes for table `purchases`
---
-ALTER TABLE `purchases`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `user_id` (`user_id`),
-  ADD KEY `product_id` (`product_id`);
-
---
--- Indexes for table `users`
---
-ALTER TABLE `users`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `email` (`email`);
+  ADD UNIQUE KEY `email` (`email`,`ip_address`,`created_at`);
 
 --
 -- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT for table `admins`
+-- AUTO_INCREMENT for table `failed_logins`
 --
-ALTER TABLE `admins`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT for table `cart`
---
-ALTER TABLE `cart`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
-
---
--- AUTO_INCREMENT for table `companies`
---
-ALTER TABLE `companies`
+ALTER TABLE `failed_logins`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
---
--- AUTO_INCREMENT for table `history`
---
-ALTER TABLE `history`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
---
--- AUTO_INCREMENT for table `products`
---
-ALTER TABLE `products`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
-
---
--- AUTO_INCREMENT for table `product_feedback`
---
-ALTER TABLE `product_feedback`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
-
---
--- AUTO_INCREMENT for table `purchases`
---
-ALTER TABLE `purchases`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
-
---
--- AUTO_INCREMENT for table `users`
---
-ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
---
--- Constraints for dumped tables
---
-
---
--- Constraints for table `cart`
---
-ALTER TABLE `cart`
-  ADD CONSTRAINT `cart_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`),
-  ADD CONSTRAINT `cart_ibfk_2` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`);
-
---
--- Constraints for table `product_feedback`
---
-ALTER TABLE `product_feedback`
-  ADD CONSTRAINT `product_feedback_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`),
-  ADD CONSTRAINT `product_feedback_ibfk_2` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`);
-
---
--- Constraints for table `purchases`
---
-ALTER TABLE `purchases`
-  ADD CONSTRAINT `purchases_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`),
-  ADD CONSTRAINT `purchases_ibfk_2` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

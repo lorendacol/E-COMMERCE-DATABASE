@@ -13,18 +13,21 @@ $email_err = $password_err = $login_err = "";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
+    // Check if email is provided
     if (empty(trim($_POST["email"]))) {
         $email_err = "Please enter your email.";
     } else {
         $email = trim($_POST["email"]);
     }
 
+    // Check if password is provided
     if (empty(trim($_POST["password"]))) {
         $password_err = "Please enter your password.";
     } else {
         $password = trim($_POST["password"]);
     }
 
+    // If no errors, proceed with login attempt
     if (empty($email_err) && empty($password_err)) {
 
         $sql = "SELECT id, email, password, full_name, failed_attempts, last_failed_attempt FROM users WHERE email = :email";
@@ -46,7 +49,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         $last_failed_attempt = $row["last_failed_attempt"];
 
                         // Lockout time is 3 minutes
-                        $lockout_time = 180; // 3 minutes in seconds
+                        $lockout_time = 60; // 3 minutes in seconds
                         $current_time = time();
 
                         // Check if the account is locked due to failed attempts
@@ -75,6 +78,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                 $stmt_reset->bindParam(":id", $id, PDO::PARAM_INT);
                                 $stmt_reset->execute();
 
+                                // Start session and login user
                                 session_start();
                                 $_SESSION["loggedin"] = true;
                                 $_SESSION["id"] = $id;
